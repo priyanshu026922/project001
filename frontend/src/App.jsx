@@ -1,26 +1,28 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import { CreateTodo } from './components/CreateTodo'
-import { Todos } from './components/Todos'
+import { useState, useEffect } from 'react';
+import './App.css';
+import { CreateTodo } from './components/CreateTodo';
+import { Todos } from './components/Todos';
 
-// useEffect hook
 function App() {
   const [todos, setTodos] = useState([]);
 
-  // fetch("http://localhost:3000/todos")
-  //   .then(async function(res) {
-  //     const json = await res.json();
-  //     setTodos(json.todos);
-  //   })
+  useEffect(() => {
+    fetch("https://todo-app-fy5q.onrender.com")
+      .then(async (res) => {
+        const json = await res.json();
+        setTodos(json); 
+      })
+      .catch((err) => {
+        console.error("Failed to fetch todos:", err);
+      });
+  }, []);
 
   return (
     <div>
-      <CreateTodo></CreateTodo>
-      <Todos todos={todos}></Todos>
+      <CreateTodo />
+      <Todos todos={todos} />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
