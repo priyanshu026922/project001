@@ -26,7 +26,7 @@ export function CreateTodo(props) {
             padding: 10,
             margin: 10
         }} onClick={() => {
-            // axios
+            // also axios
             fetch("http://localhost:3000/todo", {
                 method: "POST",
                 body: JSON.stringify({

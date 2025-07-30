@@ -1,6 +1,10 @@
+require("dotenv").config();
 const mongoose=require("mongoose");
 
-mongoose.connect("mongodb+srv://priyanshu026:T2eJBvVKXmY8gMeT@cluster0.foljv.mongodb.net/");
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log("MongoDB connected"))
+  .catch((err) => console.error("Connection error:", err));
+  
 const todoSchema=mongoose.Schema({
     title:String,
     description:String,

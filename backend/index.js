@@ -10,7 +10,6 @@ app.use(cors({
 
 //putting in mongodb
 app.post("/todo", async function (req, res) {
-  try {
     const createPayLoad = req.body;
     const parsedPayLoad = createTodo.safeParse(createPayLoad);
 
@@ -31,9 +30,6 @@ app.post("/todo", async function (req, res) {
         msg: "todo created" 
     })
 
-  } catch (err) {
-    res.status(500).json({ msg: "Internal server error", error: err.message });
-  }
 });
 
 
@@ -53,7 +49,12 @@ app.put("/completed", async function(req, res) {
     return;
   }
 
-  await todo.updateOne({ _id: req.body.id }, { completed: true });
+  await todo.updateOne({
+     _id: req.body.id 
+    },
+     { 
+      completed: true 
+     });
 
   res.json({ msg: "todo marked done" });
 });
