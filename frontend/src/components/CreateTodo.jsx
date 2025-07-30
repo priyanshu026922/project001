@@ -27,7 +27,7 @@ export function CreateTodo(props) {
             margin: 10
         }} onClick={() => {
             // also axios
-            fetch("http://localhost:3000/todo", {
+            fetch("https://todo-app-fy5q.onrender.com/todo", {
                 method: "POST",
                 body: JSON.stringify({
                     title: title,

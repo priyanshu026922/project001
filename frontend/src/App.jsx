@@ -7,7 +7,7 @@ function App() {
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
-    fetch("https://todo-app-fy5q.onrender.com")
+    fetch("https://todo-app-fy5q.onrender.com/todos")
       .then(async (res) => {
         const json = await res.json();
         setTodos(json); 

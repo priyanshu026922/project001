@@ -11,7 +11,6 @@ app.use(cors({
   ]
 }));
 
-//putting in mongodb
 app.post("/todo", async function (req, res) {
     const createPayLoad = req.body;
     const parsedPayLoad = createTodo.safeParse(createPayLoad);
@@ -62,5 +61,4 @@ app.put("/completed", async function(req, res) {
   res.json({ msg: "todo marked done" });
 });
 
-
-app.listen(3000);
+app.listen(process.env.PORT || 3000);
